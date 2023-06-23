@@ -6,28 +6,24 @@ const Button = props => {
     <TouchableOpacity style={styles.button}
       onPress={() => console.log(props.funct)}>
       <Text style={styles.buttonText}>{props.name}</Text>
-
   </TouchableOpacity>
   )
 }
 
 export default function App() {
-  const handleButtonPress = (buttonText) => {
-    console.log(`Pressed ${buttonText}`);
-  };
-  
+  var ans = 100
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.answer}>100</Text>
+      <Text style={styles.answer}>{ans}</Text>
       <View style={styles.buttonContainer}>
-        <Button name="C" funct="Clear"/>
+        <Button name="c" funct="Clear"/>
         <Button name="+/-" funct="Negate"/>
         <Button name="%" funct="Percent"/>
         <Button name="÷" funct="Divide"/>
         <Button name="7" funct="Seven"/>
         <Button name="8" funct="Eight"/>
         <Button name="9" funct="Nine"/>
-        <Button name="X" funct="Multiply"/>
+        <Button name="x" funct="Multiply"/>
         <Button name="4" funct="Four"/>
         <Button name="5" funct="Five"/>
         <Button name="6" funct="Six"/>
