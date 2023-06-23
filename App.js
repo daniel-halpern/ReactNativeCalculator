@@ -1,135 +1,45 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, SafeAreaView } from 'react-native';
 
+const Button = props => {
+  return (
+    <TouchableOpacity style={styles.button}
+      onPress={() => console.log(props.funct)}>
+      <Text style={styles.buttonText}>{props.name}</Text>
+
+  </TouchableOpacity>
+  )
+}
+
 export default function App() {
   const handleButtonPress = (buttonText) => {
     console.log(`Pressed ${buttonText}`);
   };
-
+  
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.answer}>0</Text>
+      <Text style={styles.answer}>100</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('clear')}
-        >
-          <Text style={styles.buttonText}>C</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('negate')}
-        >
-          <Text style={styles.buttonText}>+/-</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('percent')}
-        >
-          <Text style={styles.buttonText}>%</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('divide')}
-        >
-          <Text style={styles.buttonText}>÷</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('7')}
-        >
-          <Text style={styles.buttonText}>7</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('8')}
-        >
-          <Text style={styles.buttonText}>8</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('9')}
-        >
-          <Text style={styles.buttonText}>9</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('multiply')}
-        >
-          <Text style={styles.buttonText}>X</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('4')}
-        >
-          <Text style={styles.buttonText}>4</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('5')}
-        >
-          <Text style={styles.buttonText}>5</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('6')}
-        >
-          <Text style={styles.buttonText}>6</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('subtract')}
-        >
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('1')}
-        >
-          <Text style={styles.buttonText}>1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('2')}
-        >
-          <Text style={styles.buttonText}>2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('3')}
-        >
-          <Text style={styles.buttonText}>3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('plus')}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('0')}
-        >
-          <Text style={styles.buttonText}>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('0')}
-        >
-          <Text style={styles.buttonText}>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('.1')}
-        >
-          <Text style={styles.buttonText}>.1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleButtonPress('equals')}
-        >
-          <Text style={styles.buttonText}>=</Text>
-        </TouchableOpacity>
+        <Button name="C" funct="Clear"/>
+        <Button name="+/-" funct="Negate"/>
+        <Button name="%" funct="Percent"/>
+        <Button name="÷" funct="Divide"/>
+        <Button name="7" funct="Seven"/>
+        <Button name="8" funct="Eight"/>
+        <Button name="9" funct="Nine"/>
+        <Button name="X" funct="Multiply"/>
+        <Button name="4" funct="Four"/>
+        <Button name="5" funct="Five"/>
+        <Button name="6" funct="Six"/>
+        <Button name="-" funct="Subtract"/>
+        <Button name="1" funct="One"/>
+        <Button name="2" funct="Two"/>
+        <Button name="3" funct="Three"/>
+        <Button name="+" funct="Add"/>
+        <Button name="0" funct="Zero"/>
+        <Button name="0" funct="Zero"/>
+        <Button name="." funct="."/>
+        <Button name="=" funct="Equals"/>
       </View>
     </SafeAreaView>
   );
