@@ -5,7 +5,7 @@ const NumButton = props => {
   const { setAns, ans } = props;
   return (
     <TouchableOpacity style={styles.button}
-      onPress={() => setAns(parseFloat(numPress(props.name, ans)))}>
+      onPress={() => setAns(numPress(props.name, ans))}>
 
       <Text style={styles.buttonText}>{props.name}</Text>
   </TouchableOpacity>
@@ -18,7 +18,7 @@ const OperatorButton = props => {
     
     <TouchableOpacity style={styles.button}
       onPress={() => {
-      setTerm1(ans)
+      setTerm1(toString(ans))
       setAns(0)
       }}>
       {/*Set Term 1 to the current answer displayed
@@ -50,7 +50,7 @@ function numPress(num, term) {
 
 //clearPress
 export default function App() {
-  const [ans, setAns] = useState(0);
+  const [ans, setAns] = useState("0");
   const [term1, setTerm1] = useState(0);
   const [operator, setOperator] = useState(0);
   return (
@@ -60,7 +60,7 @@ export default function App() {
 
         <TouchableOpacity style={styles.button}
           onPress={() => {
-          setAns(0)
+          setAns("0")
           setOperator(0)
           //Clear other terms
           }}>
@@ -69,14 +69,21 @@ export default function App() {
 
         <TouchableOpacity style={styles.button}
           onPress={() => {
-          setAns(parseFloat(ans)*-1)
+          if (ans[0] == '-') {
+            setAns(ans.substring(1))
+          } else {
+            setAns("-"+ans)
+          }
           }}>
           <Text style={styles.buttonText}>+/-</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}
           onPress={() => {
-          setAns(parseFloat(ans)/100)
+          setAns((parseFloat(ans)/100).toString())
+          console.log((parseFloat(ans)/100).toString())
+
+          //setAns(toString(parseFloat(ans)/100))
           }}>
           <Text style={styles.buttonText}>%</Text>
         </TouchableOpacity>
