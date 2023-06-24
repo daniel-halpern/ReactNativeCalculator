@@ -1,41 +1,128 @@
-import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, SafeAreaView } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, View, TouchableOpacity, Text, SafeAreaView} from 'react-native';
 
-const Button = props => {
+const NumButton = props => {
+  const { setAns, ans } = props;
   return (
     <TouchableOpacity style={styles.button}
-      onPress={() => console.log(props.funct)}>
+      onPress={() => setAns(parseFloat(numPress(props.name, ans)))}>
+
       <Text style={styles.buttonText}>{props.name}</Text>
   </TouchableOpacity>
   )
 }
 
+const OperatorButton = props => {
+  const { term1, setTerm1, setAns, ans } = props;
+  return (
+    
+    <TouchableOpacity style={styles.button}
+      onPress={() => {
+      setTerm1(ans)
+      setAns(0)
+      }}>
+      {/*Set Term 1 to the current answer displayed
+      Reset current display*/}
+      <Text style={styles.buttonText}>{props.name}</Text>
+  </TouchableOpacity>
+  )
+}
+
+const Button = props => {
+  return (
+    <TouchableOpacity style={styles.button}
+      onPress={() => numPress(props.name, props.term1)}>
+      <Text style={styles.buttonText}>{props.name}</Text>
+  </TouchableOpacity>
+  )
+}
+
+//function equalsPress(term1)
+
+//operatorPress
+
+function numPress(num, term) {
+  term += num
+  console.log(term)
+  return(term)
+  
+}
+
+//clearPress
 export default function App() {
-  var ans = 100
+  const [ans, setAns] = useState(0);
+  const [term1, setTerm1] = useState(0);
+  const [operator, setOperator] = useState(0);
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.answer}>{ans}</Text>
       <View style={styles.buttonContainer}>
-        <Button name="c" funct="Clear"/>
-        <Button name="+/-" funct="Negate"/>
-        <Button name="%" funct="Percent"/>
-        <Button name="÷" funct="Divide"/>
-        <Button name="7" funct="Seven"/>
-        <Button name="8" funct="Eight"/>
-        <Button name="9" funct="Nine"/>
-        <Button name="x" funct="Multiply"/>
-        <Button name="4" funct="Four"/>
-        <Button name="5" funct="Five"/>
-        <Button name="6" funct="Six"/>
-        <Button name="-" funct="Subtract"/>
-        <Button name="1" funct="One"/>
-        <Button name="2" funct="Two"/>
-        <Button name="3" funct="Three"/>
-        <Button name="+" funct="Add"/>
-        <Button name="0" funct="Zero"/>
-        <Button name="0" funct="Zero"/>
-        <Button name="." funct="."/>
-        <Button name="=" funct="Equals"/>
+
+        <TouchableOpacity style={styles.button}
+          onPress={() => {
+          setAns(0)
+          setOperator(0)
+          //Clear other terms
+          }}>
+          <Text style={styles.buttonText}>c</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}
+          onPress={() => {
+          setAns(parseFloat(ans)*-1)
+          }}>
+          <Text style={styles.buttonText}>+/-</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}
+          onPress={() => {
+          setAns(parseFloat(ans)/100)
+          }}>
+          <Text style={styles.buttonText}>%</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[operator === 1 ? styles.buttonOn : styles.button]}
+          onPress={() => {
+          setOperator(1)
+          }}>
+          <Text style={styles.buttonText}>÷</Text>
+        </TouchableOpacity>  
+
+        <NumButton name="7" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="8" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="9" term1={term1} setAns = {setAns} ans = {ans}/>
+
+        <TouchableOpacity style={[operator === 2 ? styles.buttonOn : styles.button]}
+          onPress={() => {
+          setOperator(2)
+          }}>
+          <Text style={styles.buttonText}>x</Text>
+        </TouchableOpacity>  
+
+        <NumButton name="4" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="5" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="6" term1={term1} setAns = {setAns} ans = {ans}/>
+
+        <TouchableOpacity style={[operator === 3 ? styles.buttonOn : styles.button]}
+          onPress={() => {
+          setOperator(3)
+          }}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>  
+
+        <NumButton name="1" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="2" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="3" term1={term1} setAns = {setAns} ans = {ans}/>
+        <TouchableOpacity style={[operator === 4 ? styles.buttonOn : styles.button]}
+          onPress={() => {
+          setOperator(4)
+          }}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>  
+        <NumButton name="0" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="0" term1={term1} setAns = {setAns} ans = {ans}/>
+        <NumButton name="." term1={term1} setAns = {setAns} ans = {ans}/>
+        <Button name="="/>
       </View>
     </SafeAreaView>
   );
@@ -60,6 +147,16 @@ const styles = StyleSheet.create({
     height: 75,
     borderRadius: 50,
     backgroundColor: '#B2BEB5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  buttonOn: {
+    flexDirection: 'row',
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+    backgroundColor: '#FFA500',
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 10,
