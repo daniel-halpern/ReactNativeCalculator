@@ -43,6 +43,9 @@ const Button = props => {
 
 function numPress(num, term) {
   term += num
+  if (term[0] == '0') {
+    term = term.substring(1)
+  }
   console.log(term)
   return(term)
   
