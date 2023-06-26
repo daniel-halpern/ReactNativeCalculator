@@ -171,9 +171,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#444',
   },
   buttonContainer: {
-    gap: 15,
+    margin: '5%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B2BEB5',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical: '4%',
   },
   buttonOn: {
     flexDirection: 'row',
@@ -195,14 +195,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFA500',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical: '4%',
   },
   buttonText: {
     fontSize: 24,
     color: '#FFF',
   },
   answer: {
-    margin: 15,
+    margin: '5%',
     alignSelf: 'flex-end',
     fontSize: 60,
     color: '#FFF',
